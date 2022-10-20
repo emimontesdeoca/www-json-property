@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "WwwJsonProperty": {º
+    "WwwJsonProperty": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
