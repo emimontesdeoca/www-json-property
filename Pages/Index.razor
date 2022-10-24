@@ -46,12 +46,29 @@
         {
             var trimmedString = item.Trim();
 
-            if (trimmedString.Contains("{ get; set; }"))
+            if (trimmedString.Contains(" class "))
             {
                 var splittedItem = trimmedString.Split(" ");
                 var propertyName = splittedItem[2];
                 var jsonProperty = $"[JsonProperty(\"{propertyName}\")]";
-                sb.AppendLine(jsonProperty);
+
+                if (!data.Contains($"[JsonProperty(\"{propertyName}\")]"))
+                {
+                    sb.AppendLine(jsonProperty);
+                }
+            }
+
+            if (trimmedString.Contains("{ get; set; }"))
+            {
+
+                var splittedItem = trimmedString.Split(" ");
+                var propertyName = splittedItem[2];
+                var jsonProperty = $"[JsonProperty(\"{propertyName}\")]";
+
+                if (!data.Contains($"[JsonProperty(\"{propertyName}\")]"))
+                {
+                    sb.AppendLine(jsonProperty);
+                }
             }
 
             sb.AppendLine(item);
